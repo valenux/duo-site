@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duo — La vie à deux, simplement</title>
+<meta name="description" content="Duo réunit vos dépenses partagées, votre calendrier commun et votre liste de courses dans une seule app iPhone, pensée pour les couples.">
+<meta name="theme-color" content="#111114">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111114'/%3E%3Ccircle cx='26' cy='32' r='11' fill='%23CFC8FF'/%3E%3Ccircle cx='38' cy='32' r='11' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   Duo — landing page
+   Couleurs et typographie : fichier Figma « Duo – App de couple »
+   ========================================================= */
+:root{
+  --fond:#F4F4F6; --carte:#FFFFFF; --segment:#E9E9EE;
+  --sombre:#111114; --sombre-2:#1F1F25; --piste:#2C2C33;
+  --texte:#111114; --texte-2:#3A3A42; --attenue:#6B6B73;
+  --sur-sombre:#FFFFFF; --sur-sombre-attenue:#B9B9C2;
+  --ligne:#EDEDF1; --champ:#E0E0E6;
+  --accent:#5B4FD6; --barre:#CFC8FF;
+  --p1-fond:#DCD7FF; --p1-texte:#3D33A8; --p1-point:#5B4FD6;
+  --p2-fond:#CDEFE0; --p2-texte:#1C6B4A; --p2-point:#2E9E73;
+  --positif:#1C6B4A; --negatif:#B4232C;
+  --r-carte:20px; --r-grande:28px;
+  --max:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--texte);background:var(--carte);-webkit-font-smoothing:antialiased;line-height:1.5}
+img,svg{display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+h1,h2,h3{margin:0;letter-spacing:-0.025em;line-height:1.08;font-weight:600}
+p{margin:0}
+
+/* ---------- Boutons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 24px;border-radius:999px;font:600 16px/1 'Inter',sans-serif;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s ease, background .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn-noir{background:var(--sombre);color:#fff}
+.btn-noir:hover{box-shadow:0 10px 30px rgba(17,17,20,.22)}
+.btn-blanc{background:#fff;color:var(--texte);border-color:var(--champ)}
+.btn-store{height:58px;padding:0 22px 0 18px;text-align:left;gap:12px}
+.btn-store small{display:block;font-size:11px;font-weight:500;opacity:.75;letter-spacing:.02em;margin-bottom:3px}
+.btn-store span{display:block;font-size:17px;font-weight:600;letter-spacing:-.01em}
+.btn-store[aria-disabled="true"]{cursor:default}
+.btn-store[aria-disabled="true"]:hover{transform:none;box-shadow:none}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border-radius:999px;background:#fff;border:1px solid var(--ligne);font-size:14px;font-weight:500;color:var(--texte-2)}
+.pill b{background:var(--sombre);color:#fff;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px}
+.eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--accent);background:#ECE9FF;padding:6px 12px;border-radius:999px;margin-bottom:18px}
+
+/* ---------- Navigation ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+.nav.scrolled{border-bottom-color:var(--ligne)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;font-size:20px;letter-spacing:-.02em}
+.logo-mark{width:34px;height:34px;border-radius:11px;background:var(--sombre);display:flex;align-items:center;justify-content:center}
+.logo-mark i{width:11px;height:11px;border-radius:50%;background:var(--barre)}
+.logo-mark i+i{background:#fff;margin-left:-3px}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:15px;font-weight:500;color:var(--texte-2)}
+.nav ul a:hover{color:var(--texte)}
+.nav .btn{height:44px;padding:0 20px;font-size:15px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;padding:72px 0 0}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:100%;background:
+  radial-gradient(600px 420px at 85% 30%, rgba(207,200,255,.65), transparent 70%),
+  radial-gradient(520px 380px at 70% 85%, rgba(205,239,224,.75), transparent 70%),
+  linear-gradient(180deg,#fff 0%, var(--fond) 100%);z-index:-1}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(44px,6vw,76px);margin:22px 0 22px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:19px;color:var(--attenue);max-width:480px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.note{margin-top:16px;font-size:13px;color:var(--attenue);display:flex;align-items:center;gap:8px}
+.note::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--p2-point);box-shadow:0 0 0 4px rgba(46,158,115,.18)}
+.hero-visual{position:relative;height:640px}
+.hero-visual .phone{position:absolute}
+.hero-visual .phone.back{right:6%;top:40px;transform:rotate(8deg) scale(.86);opacity:.98}
+.hero-visual .phone.front{left:4%;top:0;transform:rotate(-4deg)}
+.float-card{position:absolute;background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(17,17,20,.12);padding:14px 16px;display:flex;align-items:center;gap:12px;font-size:14px}
+.float-card .av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px}
+.float-card b{display:block;font-size:14px}
+.float-card span{color:var(--attenue);font-size:12px}
+.fc-1{left:-4%;bottom:120px}
+.fc-2{right:0;top:20px}
+
+/* ---------- Bandeau ---------- */
+.trio{padding:56px 0 24px;background:var(--fond)}
+.trio .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.trio-item{background:#fff;border-radius:var(--r-carte);padding:22px;display:flex;gap:14px;align-items:flex-start}
+.ico{width:44px;height:44px;border-radius:14px;background:var(--fond);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trio-item h3{font-size:16px;letter-spacing:-.01em;margin-bottom:4px}
+.trio-item p{font-size:14px;color:var(--attenue)}
+
+/* ---------- Sections ---------- */
+section{scroll-margin-top:80px}
+.sec{padding:110px 0}
+.sec-gris{background:var(--fond)}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 56px}
+.sec-head h2,.feat h2{font-size:clamp(34px,4vw,48px)}
+.sec-head p{margin-top:16px;font-size:18px;color:var(--attenue)}
+
+/* Étapes */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.step{background:#fff;border-radius:var(--r-grande);padding:28px;border:1px solid var(--ligne);position:relative}
+.step .num{font-size:13px;font-weight:600;color:var(--accent);background:#ECE9FF;padding:5px 11px;border-radius:999px;display:inline-block}
+.step h3{font-size:22px;margin:18px 0 8px}
+.step p{color:var(--attenue);font-size:15px}
+.step .code{margin-top:20px;background:var(--fond);border-radius:16px;padding:16px;text-align:center}
+.step .code small{font-size:12px;color:var(--attenue)}
+.step .code b{display:block;font-size:28px;letter-spacing:.14em;font-weight:600;margin-top:4px}
+.step .mini{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap}
+.step .mini span{font-size:13px;font-weight:500;padding:8px 12px;border-radius:999px;border:1px solid var(--champ);background:#fff}
+.step .mini span.on{background:var(--sombre);color:#fff;border-color:var(--sombre)}
+
+/* Fonctionnalités */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.feat + .feat{margin-top:120px}
+.feat.reverse .feat-visual{order:2}
+.feat-visual{position:relative;display:flex;justify-content:center;padding:40px 0;border-radius:36px}
+.feat-visual.v1{background:radial-gradient(70% 70% at 50% 50%, #ECE9FF 0%, transparent 70%)}
+.feat-visual.v2{background:radial-gradient(70% 70% at 50% 50%, #E3F6EE 0%, transparent 70%)}
+.feat-visual.v3{background:radial-gradient(70% 70% at 50% 50%, #F0F0F4 0%, transparent 70%)}
+.feat p.lead{font-size:18px;color:var(--attenue);margin-top:18px}
+.checks{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--texte-2)}
+.checks li::before{content:"";flex-shrink:0;width:24px;height:24px;border-radius:50%;background:var(--sombre) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat;margin-top:1px}
+.checks b{color:var(--texte);font-weight:600}
+
+/* ---------- Section sombre (bento) ---------- */
+.dark{background:var(--sombre);color:#fff;position:relative;overflow:hidden}
+.dark::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(700px 400px at 20% 0%, rgba(91,79,214,.35), transparent 70%),
+  radial-gradient(600px 400px at 90% 100%, rgba(46,158,115,.18), transparent 70%)}
+.dark .wrap{position:relative}
+.dark .sec-head p{color:var(--sur-sombre-attenue)}
+.dark .eyebrow{background:rgba(207,200,255,.14);color:var(--barre)}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025));border:1px solid rgba(255,255,255,.09);border-radius:var(--r-grande);padding:28px;overflow:hidden;position:relative}
+.tile h3{font-size:22px;margin-bottom:8px}
+.tile p{color:var(--sur-sombre-attenue);font-size:15px}
+.t-notif{grid-column:span 4;min-height:340px}
+.t-secu{grid-column:span 2}
+.t-sync{grid-column:span 2}
+.t-zero{grid-column:span 2}
+.t-face{grid-column:span 2}
+.notifs{margin-top:26px;display:grid;gap:10px;max-width:520px}
+.notif{background:rgba(255,255,255,.92);color:var(--texte);border-radius:20px;padding:12px 14px;display:flex;gap:12px;align-items:flex-start;transform-origin:top center}
+.notif .app{width:36px;height:36px;border-radius:10px;background:var(--sombre);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.notif .app i{width:11px;height:11px;border-radius:50%;background:var(--barre)}
+.notif .app i+i{background:#fff;margin-left:-3px}
+.notif .t{display:flex;justify-content:space-between;gap:8px;font-size:14px;font-weight:600}
+.notif .t span{font-weight:400;color:var(--texte-2);font-size:12px}
+.notif p{font-size:14px;color:var(--texte)}
+.notif:nth-child(2){opacity:.82;transform:scale(.97)}
+.notif:nth-child(3){opacity:.6;transform:scale(.94)}
+.big{font-size:56px;font-weight:600;letter-spacing:-.03em;line-height:1;margin:6px 0 14px;background:linear-gradient(90deg,#fff,var(--barre));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sync-dots{display:flex;align-items:center;gap:10px;margin:8px 0 22px}
+.sync-dots .av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600}
+.sync-dots .line{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--barre) 0 6px,transparent 6px 12px);animation:flow 1.2s linear infinite}
+@keyframes flow{to{background-position:12px 0}}
+.lock{width:56px;height:56px;border-radius:18px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;margin-bottom:22px}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:#fff;border-radius:var(--r-carte);border:1px solid var(--ligne);padding:0 22px}
+.faq summary{list-style:none;cursor:pointer;padding:22px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:28px;height:28px;flex-shrink:0;border-radius:50%;background:var(--fond) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111114' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 6v12M6 12h12'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--attenue);font-size:16px}
+.faq summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:8px}
+
+/* ---------- CTA final ---------- */
+.cta-final{padding:40px 0 110px}
+.cta-box{background:var(--sombre);color:#fff;border-radius:40px;padding:64px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 360px at 85% 40%, rgba(91,79,214,.45), transparent 70%)}
+.cta-box > *{position:relative}
+.cta-box h2{font-size:clamp(34px,4vw,50px)}
+.cta-box p{color:var(--sur-sombre-attenue);font-size:18px;margin-top:16px}
+.cta-box .btn-blanc{border-color:transparent}
+.cta-box .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.14)}
+.cta-phones{height:360px;position:relative}
+.cta-phones .phone{position:absolute;left:50%;top:-10px;transform:translateX(-50%) rotate(6deg) scale(.82)}
+
+/* ---------- Pied de page ---------- */
+footer{border-top:1px solid var(--ligne);padding:40px 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--attenue)}
+footer nav{display:flex;gap:24px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--texte)}
+
+/* =========================================================
+   Téléphone et écrans de l'app (reproduits depuis Figma)
+   ========================================================= */
+.phone{width:300px;height:640px;border-radius:52px;background:#0B0B0E;padding:10px;box-shadow:0 40px 80px -20px rgba(17,17,20,.35),0 0 0 1px rgba(255,255,255,.06) inset}
+.screen{width:280px;height:620px;border-radius:43px;overflow:hidden;background:var(--fond);position:relative}
+.screen .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:88px;height:26px;border-radius:20px;background:#0B0B0E;z-index:5}
+.ui{width:390px;height:864px;transform:scale(.718);transform-origin:top left;padding:64px 20px 0;font-size:15px;position:relative}
+.ui *{line-height:1.3}
+.ui .row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ui .col{display:flex;flex-direction:column}
+.ui .muted{color:var(--attenue)}
+.ui .t28{font-size:28px;font-weight:600;letter-spacing:-.02em}
+.ui .t13{font-size:13px}
+.ui .t14{font-size:14px}
+.ui .card{background:#fff;border-radius:20px}
+.ui .round{width:44px;height:44px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center}
+.ui .round.dark{background:var(--sombre)}
+.ui .av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;border:2px solid var(--fond)}
+.p1{background:var(--p1-fond);color:var(--p1-texte)}
+.p2{background:var(--p2-fond);color:var(--p2-texte)}
+.ui .chip{font-size:12px;font-weight:500;padding:5px 10px;border-radius:999px;background:var(--ligne);white-space:nowrap}
+.ui .chip.p2{background:#E3F6EE}
+.ui .budget{background:var(--sombre);color:#fff;border-radius:28px;padding:22px 22px 18px;margin-top:24px;display:flex;flex-direction:column;gap:16px}
+.ui .budget .amt{font-size:40px;font-weight:600;letter-spacing:-.03em}
+.ui .budget .sub{color:var(--sur-sombre-attenue);font-size:14px}
+.ui .bar{height:8px;border-radius:4px;background:var(--piste);overflow:hidden}
+.ui .bar i{display:block;height:100%;width:74%;background:var(--barre);border-radius:4px}
+.ui .bal{background:var(--sombre-2);border-radius:16px;padding:10px 10px 10px 14px}
+.ui .bal .b{background:#fff;color:var(--texte);font-weight:600;font-size:13px;padding:8px 14px;border-radius:999px}
+.ui .ev{display:flex;align-items:center;gap:14px;padding:12px 14px;background:#fff;border-radius:20px}
+.ui .date{width:48px;height:52px;border-radius:14px;background:var(--fond);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ui .date small{font-size:11px;color:var(--attenue);text-transform:uppercase}
+.ui .date b{font-size:18px}
+.ui .tabbar{position:absolute;left:0;right:0;top:780px;height:84px;background:#fff;border-top:1px solid var(--ligne);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 8px 22px}
+.ui .tabbar span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:500;color:var(--attenue)}
+.ui .tabbar span.on{color:var(--texte);font-weight:600}
+.ui .list{background:#fff;border-radius:20px;padding:2px 14px}
+.ui .li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ligne)}
+.ui .li:last-child{border-bottom:0}
+.ui .tile-ic{width:40px;height:40px;border-radius:12px;background:var(--fond);display:flex;align-items:center;justify-content:center}
+.ui .grp{font-size:13px;font-weight:500;color:var(--attenue);margin:20px 0 8px}
+.ui .cal{background:#fff;border-radius:24px;padding:16px 12px 12px;margin-top:20px}
+.ui .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);row-gap:2px;text-align:center}
+.ui .cal-grid .h{font-size:12px;color:var(--attenue);padding-bottom:4px}
+.ui .cal-grid .d{height:46px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-weight:500}
+.ui .cal-grid .d.sel{background:var(--sombre);color:#fff;font-weight:600}
+.ui .cal-grid .d.today{background:var(--p1-fond);color:var(--p1-texte);font-weight:600}
+.ui .dots{display:flex;gap:3px;height:5px}
+.ui .dots i{width:5px;height:5px;border-radius:50%}
+.ui .cb{width:24px;height:24px;border-radius:8px;border:1.5px solid #C4C4CC;background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.ui .cb.on{background:var(--sombre);border-color:var(--sombre)}
+.ui .done{color:#8A8A93;text-decoration:line-through}
+.ui .mini-av{width:24px;height:24px;border-radius:50%;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ---------- Apparition au défilement ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .sync-dots .line{animation:none}
+  .btn{transition:none}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px){
+  .nav ul{display:none}
+  .hero .wrap,.feat,.cta-box{grid-template-columns:1fr}
+  .hero{padding-top:40px}
+  .hero-visual{height:600px;max-width:520px;margin:0 auto;width:100%}
+  .feat.reverse .feat-visual{order:0}
+  .feat{gap:28px}
+  .trio .wrap,.steps{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr}
+  .t-notif,.t-secu,.t-sync,.t-zero,.t-face{grid-column:auto}
+  .cta-box{padding:40px 28px}
+  .cta-phones{display:none}
+  .sec{padding:80px 0}
+}
+@media (max-width: 520px){
+  .hero-visual .phone.back{display:none}
+  .hero-visual .phone.front{left:50%;transform:translateX(-50%) rotate(-3deg)}
+  .fc-1{left:0;bottom:60px}
+  .fc-2{right:0;top:auto;bottom:150px}
+  .btn-store{width:100%;justify-content:flex-start}
+  .ctas .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- Icônes réutilisées (mêmes tracés que dans Figma) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></symbol>
+    <symbol id="i-basket" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></symbol>
+    <symbol id="i-fork" viewBox="0 0 24 24"><path d="M7 3v8a2 2 0 0 0 2 2v8M5 3v5M9 3v5M17 21V3c-2 0-3.5 2.5-3.5 6s1.5 4 3.5 4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8C7 7.3 5.6 8.2 4.8 9.6c-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.6-1-2.6-3.7zM14.2 5.5c.6-.8 1.1-1.8 1-2.9-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.7-1.3z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Duo, accueil"><span class="logo-mark" aria-hidden="true"><i></i><i></i></span>Duo</a>
+    <nav aria-label="Navigation principale">
+      <ul>
+        <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+        <li><a href="#comment">Comment ça marche</a></li>
+        <li><a href="#securite">Sécurité</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-noir" href="#telecharger" data-store-link>Télécharger</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="pill"><b>Nouveau</b>Pensée pour les couples</span>
+        <h1>La vie à deux,<br><em>simplement.</em></h1>
+        <p class="lead">Dépenses partagées, calendrier commun et liste de courses&nbsp;: tout ce qui fait votre quotidien à deux, réuni dans une seule app iPhone.</p>
+        <div class="ctas" id="telecharger">
+          <a class="btn btn-noir btn-store" href="#" data-store-button>
+            <svg width="26" height="26" fill="currentColor" aria-hidden="true"><use href="#i-apple"/></svg>
+            <span><small data-store-small>Bientôt sur l'</small><span>App Store</span></span>
+          </a>
+          <a class="btn btn-blanc" href="#fonctionnalites">Découvrir l'app
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+        <p class="note" data-store-note>Disponible pour iPhone · iOS 17 ou plus récent</p>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <!-- Écran Dépenses (arrière) -->
+        <div class="phone back"><div class="screen"><div class="island"></div>
+          <div class="ui">
+            <div class="row"><span class="t28">Dépenses</span><span class="card t14" style="padding:10px 14px;border-radius:999px;font-weight:500">Novembre ▾</span></div>
+            <div class="card" style="margin-top:20px;padding:18px;border-radius:24px">
+              <div class="row" style="align-items:flex-start">
+                <div class="col" style="gap:6px;flex:1"><span class="t13 muted">Valentin</span><b style="font-size:22px;color:var(--positif)">+98,85 $</b></div>
+                <div class="col" style="gap:6px;flex:1"><span class="t13 muted">Camille</span><b style="font-size:22px;color:var(--negatif)">−98,85 $</b></div>
+              </div>
+              <div class="row" style="border-top:1px solid var(--ligne);margin-top:14px;padding-top:12px"><span class="t14">Total du mois · <b>1 842,30 $</b></span><span style="background:var(--sombre);color:#fff;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px">Équilibrer</span></div>
+            </div>
+            <div class="grp">Aujourd'hui</div>
+            <div class="list"><div class="li"><span class="tile-ic"><svg width="20" height="20" fill="none" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-basket"/></svg></span><div class="col" style="flex:1"><b>Épicerie IGA</b><span class="t13 muted">Payé par Valentin · 50/50</span></div><b>86,40 $</b></div></div>
+            <div class="grp">Hier</div>
+            <div class="list">
+              <div class="li"><span class="tile-ic"><svg width="20" height="20" fill="none" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bolt"/></svg></span><div class="col" style="flex:1"><b>Hydro-Québec</b><span class="t13 muted">Payé par Camille · 50/50</span></div><b>72,15 $</b></div>
+              <div class="li"><span class="tile-ic"><svg width="20" height="20" fill="none" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-fork"/></svg></span><div class="col" style="flex:1"><b>Restaurant</b><span class="t13 muted">Payé par Camille · 50/50</span></div><b>64,00 $</b></div>
+            </div>
+            <div class="tabbar"><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-home"/></svg>Accueil</span><span class="on"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-receipt"/></svg>Dépenses</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cal"/></svg>Calendrier</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-list"/></svg>Courses</span></div>
+          </div>
+        </div></div>
+
+        <!-- Écran Accueil (avant) -->
+        <div class="phone front"><div class="screen"><div class="island"></div>
+          <div class="ui">
+            <div class="row">
+              <div class="col" style="gap:4px"><span class="t14 muted">Lundi 23 novembre</span><span class="t28">Bonjour Valentin</span></div>
+              <div class="row" style="gap:8px"><div style="display:flex"><span class="av p1">V</span><span class="av p2" style="margin-left:-10px">C</span></div><span class="round"><svg width="20" height="20" fill="none" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-bell"/></svg></span></div>
+            </div>
+            <div class="budget">
+              <div class="row"><span class="sub">Dépensé en novembre</span><span class="t13">Détails ›</span></div>
+              <div class="col" style="gap:4px"><span class="amt">1 842,30 $</span><span class="sub">sur un budget de 2 500,00 $</span></div>
+              <div class="bar"><i></i></div>
+              <div class="row" style="align-items:flex-start"><div class="col" style="flex:1"><span class="sub t13">Payé par Valentin</span><b style="font-size:17px">1 020,00 $</b></div><div class="col" style="flex:1"><span class="sub t13">Payé par Camille</span><b style="font-size:17px">822,30 $</b></div></div>
+              <div class="row bal"><span class="t14">Camille te doit <b>98,85 $</b></span><span class="b">Équilibrer</span></div>
+            </div>
+            <div class="row" style="margin:26px 0 12px"><b style="font-size:19px">À venir</b><span class="t14" style="color:var(--accent);font-weight:500">Tout voir</span></div>
+            <div class="col" style="gap:12px">
+              <div class="ev"><span class="date"><small>Mer</small><b>25</b></span><div class="col" style="flex:1;gap:3px"><b>Souper chez Julie et Marc</b><span class="t13 muted">19 h 00</span></div><span class="chip">Ensemble</span></div>
+              <div class="ev"><span class="date"><small>Ven</small><b>27</b></span><div class="col" style="flex:1;gap:3px"><b>Dentiste</b><span class="t13 muted">10 h 15</span></div><span class="chip p2" style="color:var(--p2-texte)">Camille</span></div>
+            </div>
+            <div class="tabbar"><span class="on"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-home"/></svg>Accueil</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-receipt"/></svg>Dépenses</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cal"/></svg>Calendrier</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-list"/></svg>Courses</span></div>
+          </div>
+        </div></div>
+
+        <div class="float-card fc-1"><span class="av p2">C</span><div><b>Camille a ajouté une dépense</b><span>Pharmacie · ta part&nbsp;: 12,30 $</span></div></div>
+        <div class="float-card fc-2"><span class="av" style="background:var(--sombre);color:#fff"><svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></span><div><b>Comptes équilibrés</b><span>98,85 $ remboursés</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TROIS PILIERS ================= -->
+  <div class="trio">
+    <div class="wrap">
+      <div class="trio-item reveal"><span class="ico"><svg width="22" height="22" fill="none" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-receipt"/></svg></span><div><h3>Dépenses partagées</h3><p>Qui a payé, qui doit combien&nbsp;: les comptes se font tout seuls.</p></div></div>
+      <div class="trio-item reveal"><span class="ico"><svg width="22" height="22" fill="none" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-cal"/></svg></span><div><h3>Calendrier commun</h3><p>Vos rendez-vous, les siens et ceux à deux, au même endroit.</p></div></div>
+      <div class="trio-item reveal"><span class="ico"><svg width="22" height="22" fill="none" stroke="#111114" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-list"/></svg></span><div><h3>Liste de courses</h3><p>Un article ajouté, il apparaît aussitôt sur l'autre iPhone.</p></div></div>
+    </div>
+  </div>
+
+  <!-- ================= COMMENT ÇA MARCHE ================= -->
+  <section class="sec sec-gris" id="comment">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2>Prêts en deux minutes</h2>
+        <p>Pas de configuration compliquée&nbsp;: un compte chacun, un code, et c'est parti.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="num">Étape 1</span>
+          <h3>Téléchargez Duo</h3>
+          <p>Installez l'app sur votre iPhone et créez votre compte avec votre courriel.</p>
+          <div class="mini"><span class="on">Créer un compte</span><span>Se connecter</span></div>
+        </div>
+        <div class="step reveal">
+          <span class="num">Étape 2</span>
+          <h3>Invitez votre moitié</h3>
+          <p>Partagez votre code d'invitation par message. Il est valable 48 heures.</p>
+          <div class="code"><small>Ton code d'invitation</small><b>K7Q 4ZP</b></div>
+        </div>
+        <div class="step reveal">
+          <span class="num">Étape 3</span>
+          <h3>Vivez à deux</h3>
+          <p>Dépenses, événements, courses&nbsp;: tout ce que l'un ajoute, l'autre le voit en direct.</p>
+          <div class="mini"><span class="on">Dépenses</span><span>Calendrier</span><span>Courses</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FONCTIONNALITÉS ================= -->
+  <section class="sec" id="fonctionnalites">
+    <div class="wrap">
+
+      <!-- Dépenses -->
+      <div class="feat">
+        <div class="feat-visual v1 reveal" aria-hidden="true">
+          <div class="phone"><div class="screen"><div class="island"></div>
+            <div class="ui" style="padding-top:60px">
+              <div class="row"><span class="round"><svg width="18" height="18" fill="none" stroke="#111114" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><b style="font-size:17px">Nouvelle dépense</b><span style="width:44px"></span></div>
+              <div class="col" style="align-items:center;gap:6px;margin-top:26px"><span class="t13 muted">Montant</span><span style="font-size:52px;font-weight:600;letter-spacing:-.03em">86,40 $</span><span class="card t13" style="padding:8px 12px;border-radius:999px;font-weight:500"><svg width="15" height="15" fill="none" stroke="#111114" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-2px;margin-right:6px"><use href="#i-cal"/></svg>Aujourd'hui</span></div>
+              <div class="col" style="gap:6px;margin-top:20px"><span class="t13" style="font-weight:500;color:var(--texte-2)">Titre</span><div class="card" style="height:52px;border-radius:16px;border:1px solid var(--champ);display:flex;align-items:center;padding:0 16px;font-size:16px">Épicerie IGA</div></div>
+              <div class="col" style="gap:8px;margin-top:16px"><span class="t13" style="font-weight:500;color:var(--texte-2)">Catégorie</span>
+                <div style="display:flex;flex-wrap:wrap;gap:8px">
+                  <span style="background:var(--sombre);color:#fff;padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500">Épicerie</span>
+                  <span class="card" style="padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--champ)">Logement</span>
+                  <span class="card" style="padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--champ)">Factures</span>
+                  <span class="card" style="padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--champ)">Resto</span>
+                </div></div>
+              <div class="col" style="gap:8px;margin-top:16px"><span class="t13" style="font-weight:500;color:var(--texte-2)">Répartition</span>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--segment);border-radius:14px;padding:4px">
+                  <span style="background:#fff;border-radius:10px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,.08)">50/50</span>
+                  <span style="height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--texte-2)">Montants</span>
+                  <span style="height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--texte-2)">Pour l'autre</span>
+                </div>
+                <span class="t13 muted">Chacun paie 43,20 $ · Camille doit 43,20 $ à Valentin</span></div>
+              <div style="position:absolute;left:20px;right:20px;top:756px;height:54px;border-radius:999px;background:var(--sombre);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:16px">Enregistrer</div>
+            </div>
+          </div></div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Dépenses partagées</span>
+          <h2>Fini les calculs<br>sur un coin de table</h2>
+          <p class="lead">Ajoutez une dépense en quelques secondes. Duo calcule qui doit quoi, en temps réel, sans tableur ni discussion.</p>
+          <ul class="checks">
+            <li><span><b>50/50, montants précis ou pour l'autre&nbsp;:</b> chaque dépense se partage comme vous le décidez.</span></li>
+            <li><span><b>Un solde toujours clair&nbsp;:</b> «&nbsp;Camille te doit 98,85 $&nbsp;», d'un coup d'œil.</span></li>
+            <li><span><b>Équilibrer en un geste&nbsp;:</b> remboursez par Interac, Duo remet les compteurs à zéro.</span></li>
+            <li><span><b>Un budget mensuel commun</b> pour garder le cap sur vos dépenses.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Calendrier -->
+      <div class="feat reverse">
+        <div class="feat-visual v2 reveal" aria-hidden="true">
+          <div class="phone"><div class="screen"><div class="island"></div>
+            <div class="ui">
+              <div class="row"><span class="t28">Calendrier</span><span class="round dark"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><use href="#i-plus"/></svg></span></div>
+              <div class="cal">
+                <div class="row" style="padding:0 6px 10px"><b style="font-size:16px">Novembre 2026</b><span class="t13 muted">‹ ›</span></div>
+                <div class="cal-grid" id="cal-grid"></div>
+              </div>
+              <div class="row" style="justify-content:flex-start;gap:16px;padding:12px 6px 0;font-size:12px;color:var(--texte-2)">
+                <span class="row" style="gap:6px"><i style="width:8px;height:8px;border-radius:50%;background:var(--sombre)"></i>Ensemble</span>
+                <span class="row" style="gap:6px"><i style="width:8px;height:8px;border-radius:50%;background:var(--p1-point)"></i>Valentin</span>
+                <span class="row" style="gap:6px"><i style="width:8px;height:8px;border-radius:50%;background:var(--p2-point)"></i>Camille</span>
+              </div>
+              <b style="display:block;font-size:17px;margin:20px 0 10px">Mercredi 25 novembre</b>
+              <div class="ev"><span class="date"><small>Mer</small><b>25</b></span><div class="col" style="flex:1;gap:3px"><b>Souper chez Julie et Marc</b><span class="t13 muted">19 h 00 · rappel la veille</span></div><span class="chip">Ensemble</span></div>
+              <div class="tabbar"><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-home"/></svg>Accueil</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-receipt"/></svg>Dépenses</span><span class="on"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cal"/></svg>Calendrier</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-list"/></svg>Courses</span></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Calendrier commun</span>
+          <h2>Vos agendas,<br>enfin synchronisés</h2>
+          <p class="lead">Le souper du samedi, le dentiste de mardi, le loyer de fin de mois&nbsp;: tout est au même endroit, avec une couleur pour chacun.</p>
+          <ul class="checks">
+            <li><span><b>Pour qui&nbsp;:</b> vous, votre moitié ou ensemble, visible d'un coup d'œil.</span></li>
+            <li><span><b>Rappels automatiques&nbsp;:</b> 15 min avant, 1 h avant ou la veille.</span></li>
+            <li><span><b>Les prochains événements</b> s'affichent dès l'accueil.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Courses -->
+      <div class="feat">
+        <div class="feat-visual v3 reveal" aria-hidden="true">
+          <div class="phone"><div class="screen"><div class="island"></div>
+            <div class="ui">
+              <div class="row" style="align-items:flex-end"><div class="col" style="gap:4px"><span class="t28">Courses</span><span class="t14 muted">5 articles restants sur 7</span></div><span class="card t14" style="padding:10px 14px;border-radius:999px;font-weight:500">Retirer les cochés</span></div>
+              <div class="row" style="margin-top:20px;gap:8px"><div class="card row" style="flex:1;height:52px;border-radius:16px;padding:0 10px 0 16px"><span class="muted" style="font-size:16px">Ajouter un article</span><span class="t13" style="background:var(--fond);padding:7px 10px;border-radius:999px;font-weight:500;color:var(--texte-2)">Épicerie ⌄</span></div><span style="width:52px;height:52px;border-radius:16px;background:var(--sombre);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><use href="#i-plus"/></svg></span></div>
+              <div class="grp">Fruits et légumes</div>
+              <div class="list">
+                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Bananes</span><span class="mini-av p2">C</span></div>
+                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Avocats</span><span class="mini-av p1">V</span></div>
+              </div>
+              <div class="grp">Produits laitiers</div>
+              <div class="list">
+                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Yogourt grec</span><span class="mini-av p1">V</span></div>
+                <div class="li"><span class="cb on"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></span><span class="done" style="flex:1;font-size:16px">Lait 2 %</span><span class="mini-av p2">C</span></div>
+              </div>
+              <div class="grp">Épicerie</div>
+              <div class="list">
+                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Pâtes</span><span class="mini-av p1">V</span></div>
+                <div class="li"><span class="cb on"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></span><span class="done" style="flex:1;font-size:16px">Pain tranché</span><span class="mini-av p2">C</span></div>
+              </div>
+              <div class="tabbar"><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-home"/></svg>Accueil</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-receipt"/></svg>Dépenses</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cal"/></svg>Calendrier</span><span class="on"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-list"/></svg>Courses</span></div>
+            </div>
+          </div></div>
+        </div>
+        <div class="reveal">
+          <span class="eyebrow">Liste de courses</span>
+          <h2>La même liste,<br>dans vos deux poches</h2>
+          <p class="lead">Celui qui passe à l'épicerie a toujours la liste à jour. Plus de «&nbsp;tu as pensé au lait&nbsp;?&nbsp;».</p>
+          <ul class="checks">
+            <li><span><b>Rangée par rayon&nbsp;:</b> fruits et légumes, produits laitiers, épicerie…</span></li>
+            <li><span><b>Synchronisée en direct&nbsp;:</b> un article coché disparaît chez l'autre.</span></li>
+            <li><span><b>Vous savez qui l'a ajouté,</b> grâce à son initiale.</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION SOMBRE ================= -->
+  <section class="sec dark" id="securite">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Pensée pour deux</span>
+        <h2>Tout ce qu'il faut,<br>rien de plus</h2>
+        <p>Une app sobre, sans publicité ni fonctions superflues, qui garde vos données entre vous deux.</p>
+      </div>
+      <div class="bento">
+        <div class="tile t-notif reveal">
+          <h3>Toujours au courant, jamais submergés</h3>
+          <p>Une notification quand l'autre ajoute une dépense, un événement ou des courses. Les ajouts en rafale sont regroupés, et vous n'êtes jamais notifié de vos propres actions.</p>
+          <div class="notifs" aria-hidden="true">
+            <div class="notif"><span class="app"><i></i><i></i></span><div style="flex:1"><div class="t">Nouvelle dépense<span>maintenant</span></div><p>Camille a ajouté Pharmacie · 24,60 $. Ta part&nbsp;: 12,30 $.</p></div></div>
+            <div class="notif"><span class="app"><i></i><i></i></span><div style="flex:1"><div class="t">Liste de courses<span>il y a 1 h</span></div><p>Camille a ajouté 2 articles&nbsp;: Bananes, Lait 2 %.</p></div></div>
+            <div class="notif"><span class="app"><i></i><i></i></span><div style="flex:1"><div class="t">Demain · 19 h 00<span>8 h 00</span></div><p>Souper chez Julie et Marc, avec Camille.</p></div></div>
+          </div>
+        </div>
+        <div class="tile t-secu reveal">
+          <span class="lock"><svg width="26" height="26" fill="none" stroke="#CFC8FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-lock"/></svg></span>
+          <h3>Vos données restent à deux</h3>
+          <p>Chaque duo ne voit que ses propres informations. On ne rejoint un duo qu'avec un code d'invitation.</p>
+        </div>
+        <div class="tile t-sync reveal">
+          <h3>En temps réel</h3>
+          <div class="sync-dots" aria-hidden="true"><span class="av p1">V</span><span class="line"></span><span class="av p2">C</span></div>
+          <p>Ce que l'un ajoute apparaît sur l'autre iPhone en quelques secondes.</p>
+        </div>
+        <div class="tile t-face reveal">
+          <h3>Verrouillage Face ID</h3>
+          <p>Protégez l'app d'un regard&nbsp;: vos dépenses et votre agenda restent privés, même téléphone déverrouillé.</p>
+        </div>
+        <div class="tile t-zero reveal">
+          <div class="big">0 pub</div>
+          <h3>Sobre et sans distraction</h3>
+          <p>Pas de publicité, pas de réseau social&nbsp;: juste l'essentiel de votre quotidien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="sec sec-gris" id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2>Vous vous demandez…</h2>
+      </div>
+      <div class="faq reveal">
+        <details open>
+          <summary>Faut-il un iPhone chacun&nbsp;?</summary>
+          <p>Oui&nbsp;: Duo est une app iPhone (iOS 17 ou plus récent). Chacun crée son compte sur son téléphone, puis vous liez vos comptes avec un code d'invitation.</p>
+        </details>
+        <details>
+          <summary>Duo fait-il les virements entre nous&nbsp;?</summary>
+          <p>Non. Duo calcule qui doit combien et garde l'historique. Le remboursement se fait comme d'habitude (virement Interac, comptant…), puis vous le marquez comme fait dans l'app.</p>
+        </details>
+        <details>
+          <summary>Qui peut voir nos données&nbsp;?</summary>
+          <p>Uniquement vous deux. Chaque duo est isolé&nbsp;: un autre compte ne peut ni voir ni rejoindre votre duo sans votre code. Vous pouvez aussi verrouiller l'app avec Face ID.</p>
+        </details>
+        <details>
+          <summary>Et si on se sépare, ou si je veux supprimer mon compte&nbsp;?</summary>
+          <p>Vous pouvez quitter le duo ou supprimer définitivement votre compte depuis votre profil, à tout moment.</p>
+        </details>
+        <details>
+          <summary>Y a-t-il une version Android&nbsp;?</summary>
+          <p>Pas pour le moment&nbsp;: Duo est d'abord conçu pour iPhone.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA FINAL ================= -->
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <div>
+          <h2>Prêts à simplifier<br>votre quotidien à deux&nbsp;?</h2>
+          <p>Téléchargez Duo, invitez votre moitié, et laissez l'app s'occuper des comptes.</p>
+          <div class="ctas">
+            <a class="btn btn-blanc btn-store" href="#" data-store-button>
+              <svg width="26" height="26" fill="currentColor" aria-hidden="true"><use href="#i-apple"/></svg>
+              <span><small data-store-small>Bientôt sur l'</small><span>App Store</span></span>
+            </a>
+            <a class="btn btn-ghost" href="#comment">Comment ça marche</a>
+          </div>
+        </div>
+        <div class="cta-phones" aria-hidden="true">
+          <div class="phone"><div class="screen"><div class="island"></div>
+            <div class="ui" style="padding-top:60px">
+              <div class="row"><span class="round"><svg width="18" height="18" fill="none" stroke="#111114" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><b style="font-size:17px">Équilibrer les comptes</b><span style="width:44px"></span></div>
+              <div class="card col" style="margin-top:28px;border-radius:28px;padding:24px;align-items:center;gap:16px">
+                <div class="row" style="gap:14px"><span class="av p2" style="width:48px;height:48px;font-size:17px">C</span><span class="muted">→</span><span class="av p1" style="width:48px;height:48px;font-size:17px">V</span></div>
+                <span style="color:var(--texte-2)">Camille rembourse Valentin</span>
+                <span style="font-size:48px;font-weight:600;letter-spacing:-.03em">98,85 $</span>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--segment);border-radius:14px;padding:4px;margin-top:20px">
+                <span style="background:#fff;border-radius:10px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px">Tout le solde</span>
+                <span style="height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--texte-2)">Une partie</span>
+              </div>
+              <div style="position:absolute;left:20px;right:20px;top:756px;height:54px;border-radius:999px;background:var(--sombre);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:16px">Marquer comme remboursé</div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top" style="font-size:17px"><span class="logo-mark" aria-hidden="true" style="width:28px;height:28px;border-radius:9px"><i style="width:9px;height:9px"></i><i style="width:9px;height:9px"></i></span>Duo</a>
+    <nav aria-label="Pied de page"><a href="#fonctionnalites">Fonctionnalités</a><a href="aide.html">Aide</a><a href="confidentialite.html">Confidentialité</a></nav>
+    <span>© 2026 Duo · Fait à Montréal</span>
+  </div>
+</footer>
+
+<script>
+/* ----------------------------------------------------------
+   Lien de téléchargement : colle ici l'adresse App Store
+   (ou TestFlight) dès que l'app est publiée. Tant que c'est
+   vide, les boutons affichent « Bientôt sur l'App Store ».
+   ---------------------------------------------------------- */
+const APP_STORE_URL = "";
+
+(function setupStoreLinks(){
+  const live = APP_STORE_URL.trim() !== "";
+  document.querySelectorAll('[data-store-button]').forEach(a => {
+    if (live) { a.href = APP_STORE_URL; a.target = "_blank"; a.rel = "noopener"; }
+    else { a.setAttribute('aria-disabled','true'); a.addEventListener('click', e => e.preventDefault()); a.title = "L'app arrive bientôt sur l'App Store"; }
+  });
+  document.querySelectorAll('[data-store-small]').forEach(s => s.textContent = live ? "Télécharger dans l'" : "Bientôt sur l'");
+  document.querySelectorAll('[data-store-link]').forEach(a => { if (live) { a.href = APP_STORE_URL; a.target = "_blank"; a.rel = "noopener"; } });
+  const note = document.querySelector('[data-store-note]');
+  if (note && !live) note.textContent = "En test privé · Bientôt pour iPhone (iOS 17 ou plus récent)";
+})();
+
+/* Calendrier de l'écran Calendrier */
+(function buildCalendar(){
+  const g = document.getElementById('cal-grid'); if (!g) return;
+  const dots = {14:['e'],18:['e'],23:['1'],25:['e'],27:['2'],28:['1','e'],30:['e']};
+  const col = {e:'#111114','1':'#5B4FD6','2':'#2E9E73'};
+  let html = ['D','L','M','M','J','V','S'].map(d => `<span class="h">${d}</span>`).join('');
+  for (let n = 1; n <= 35; n++) {
+    if (n > 30) { html += '<span class="d"></span>'; continue; }
+    const cls = n === 25 ? 'd sel' : (n === 23 ? 'd today' : 'd');
+    const ds = (dots[n] || []).map(w => `<i style="background:${n===25?'#fff':col[w]}"></i>`).join('');
+    html += `<span class="${cls}">${n}<span class="dots">${ds}</span></span>`;
+  }
+  g.innerHTML = html;
+})();
+
+/* Bordure de la navigation au défilement */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+/* Apparition des sections */
+const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .12 }) : null;
+document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+</script>
+</body>
+</html>

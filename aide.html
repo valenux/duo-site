@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aide et contact · Duo</title>
+<meta name="description" content="Questions fréquentes et contact pour l'app Duo.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23111114'/%3E%3Ccircle cx='26' cy='32' r='11' fill='%23CFC8FF'/%3E%3Ccircle cx='38' cy='32' r='11' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--fond:#F4F4F6;--texte:#111114;--texte-2:#3A3A42;--attenue:#6B6B73;--ligne:#EDEDF1;--accent:#5B4FD6;--barre:#CFC8FF}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--texte);background:var(--fond);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:var(--accent)}
+header{background:#fff;border-bottom:1px solid var(--ligne)}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--texte);font-weight:600;font-size:19px;letter-spacing:-.02em}
+.mark{width:32px;height:32px;border-radius:10px;background:var(--texte);display:flex;align-items:center;justify-content:center}
+.mark i{width:10px;height:10px;border-radius:50%;background:var(--barre)}.mark i+i{background:#fff;margin-left:-3px}
+header nav a{color:var(--texte-2);text-decoration:none;font-size:15px;font-weight:500;margin-left:22px}
+main{padding:56px 0 72px}
+h1{font-size:clamp(32px,5vw,44px);letter-spacing:-.03em;line-height:1.1;margin:0 0 10px;font-weight:600}
+.lead{color:var(--attenue);font-size:17px;margin:0 0 36px}
+.card{background:#fff;border-radius:24px;padding:28px 28px 12px;margin-bottom:16px}
+h2{font-size:20px;letter-spacing:-.01em;margin:0 0 10px;font-weight:600}
+p,li{font-size:16px;color:var(--texte-2)}
+ul{padding-left:20px} li{margin-bottom:6px}
+.btn{display:inline-flex;align-items:center;height:50px;padding:0 22px;border-radius:999px;background:var(--texte);color:#fff;text-decoration:none;font-weight:600;margin:4px 0 16px}
+details{border-top:1px solid var(--ligne);padding:14px 0} details:first-of-type{border-top:0}
+summary{cursor:pointer;font-weight:600;font-size:16px;color:var(--texte)}
+details p{margin:8px 0 0}
+footer{border-top:1px solid var(--ligne);padding:28px 0;font-size:14px;color:var(--attenue);background:#fff}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap} footer a{color:var(--attenue);text-decoration:none;margin-left:18px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="./"><span class="mark" aria-hidden="true"><i></i><i></i></span>Duo</a>
+<nav><a href="aide.html">Aide</a><a href="confidentialite.html">Confidentialité</a></nav></div></header>
+<main><div class="wrap">
+
+<h1>Aide et contact</h1>
+<p class="lead">Une question, un souci ou une idée pour Duo ? Écris-nous, on répond en général sous 48 heures.</p>
+
+<div class="card">
+<h2>Nous écrire</h2>
+<p>Courriel : <a href="mailto:info@valentin-guilbert.com">info@valentin-guilbert.com</a></p>
+<a class="btn" href="mailto:info@valentin-guilbert.com?subject=Duo%20-%20Aide">Envoyer un courriel</a>
+</div>
+
+<div class="card">
+<h2>Questions fréquentes</h2>
+<details><summary>Comment inviter mon ou ma partenaire ?</summary>
+<p>Après avoir créé ton compte, Duo affiche un code d'invitation valable 48 heures. Envoie-le à ton ou ta partenaire : il ou elle crée son compte, choisit « J'ai un code » et le saisit.</p></details>
+<details><summary>J'ai oublié mon mot de passe.</summary>
+<p>Sur l'écran de connexion, entre ton courriel puis appuie sur « Mot de passe oublié ? ». Tu reçois un code à 6 chiffres à saisir dans l'app, puis tu choisis un nouveau mot de passe. Pense à vérifier tes courriels indésirables.</p></details>
+<details><summary>Je ne reçois pas les notifications.</summary>
+<p>Vérifie dans Réglages › Notifications › Duo que les notifications sont autorisées, puis dans Duo › Profil › Notifications que les types voulus sont activés. Tu n'es jamais notifié de tes propres ajouts.</p></details>
+<details><summary>Duo fait-il les virements entre nous ?</summary>
+<p>Non. Duo calcule qui doit combien. Le remboursement se fait comme d'habitude (virement Interac, comptant…), puis tu le marques comme fait avec « Équilibrer ».</p></details>
+<details><summary>Comment quitter un duo ou supprimer mon compte ?</summary>
+<p>Dans Profil, en bas de l'écran : « Quitter le duo » dissocie vos comptes, « Supprimer mon compte » efface définitivement ton compte et tes données personnelles.</p></details>
+<details><summary>Qui peut voir mes données ?</summary>
+<p>Uniquement toi et la personne de ton duo. Consulte notre <a href="confidentialite.html">politique de confidentialité</a> pour le détail.</p></details>
+</div>
+</div></main>
+<footer><div class="wrap"><span>© 2026 Duo · Valentin Guilbert, Montréal</span><nav><a href="./">Accueil</a><a href="aide.html">Aide</a><a href="confidentialite.html">Confidentialité</a></nav></div></footer>
+</body></html>
