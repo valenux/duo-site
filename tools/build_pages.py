@@ -16,7 +16,7 @@ page('confidentialite.html','Politique de confidentialité','Comment Duo collect
 
 <div class="card">
 <h2>Qui est responsable</h2>
-<p>Duo est développée par Valentin Guilbert, à Montréal (Québec, Canada). Pour toute question sur vos renseignements personnels : <a href="mailto:info@valentin-guilbert.com">info@valentin-guilbert.com</a>. Cette personne agit comme responsable de la protection des renseignements personnels.</p>
+<p>Duo est développée par Valentin Guilbert, à Montréal (Québec, Canada). Pour toute question sur vos renseignements personnels : <a href="mailto:info@duo-app.app">info@duo-app.app</a>. Cette personne agit comme responsable de la protection des renseignements personnels.</p>
 </div>
 
 <div class="card">
@@ -58,7 +58,7 @@ page('confidentialite.html','Politique de confidentialité','Comment Duo collect
 
 <div class="card">
 <h2>Vos droits</h2>
-<p>Conformément à la Loi 25 au Québec et aux lois canadiennes applicables, vous pouvez demander l'accès à vos renseignements, leur rectification, leur suppression ou la portabilité de vos données en écrivant à <a href="mailto:info@valentin-guilbert.com">info@valentin-guilbert.com</a>. Nous répondons dans un délai de 30 jours. Vous pouvez aussi vous adresser à la Commission d'accès à l'information du Québec.</p>
+<p>Conformément à la Loi 25 au Québec et aux lois canadiennes applicables, vous pouvez demander l'accès à vos renseignements, leur rectification, leur suppression ou la portabilité de vos données en écrivant à <a href="mailto:info@duo-app.app">info@duo-app.app</a>. Nous répondons dans un délai de 30 jours. Vous pouvez aussi vous adresser à la Commission d'accès à l'information du Québec.</p>
 </div>
 
 <div class="card">
@@ -78,8 +78,8 @@ page('aide.html','Aide et contact',"Questions fréquentes et contact pour l'app 
 
 <div class="card">
 <h2>Nous écrire</h2>
-<p>Courriel : <a href="mailto:info@valentin-guilbert.com">info@valentin-guilbert.com</a></p>
-<a class="btn" href="mailto:info@valentin-guilbert.com?subject=Duo%20-%20Aide">Envoyer un courriel</a>
+<p>Courriel : <a href="mailto:info@duo-app.app">info@duo-app.app</a></p>
+<a class="btn" href="mailto:info@duo-app.app?subject=Duo%20-%20Aide">Envoyer un courriel</a>
 </div>
 
 <div class="card">

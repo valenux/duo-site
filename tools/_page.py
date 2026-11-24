@@ -42,7 +42,7 @@ footer .wrap{{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap
 <main><div class="wrap">
 '''
 FOOT='''</div></main>
-<footer><div class="wrap"><span>© 2026 Duo · Valentin Guilbert, Montréal</span><nav><a href="./">Accueil</a><a href="aide.html">Aide</a><a href="confidentialite.html">Confidentialité</a></nav></div></footer>
+<footer><div class="wrap"><span>© 2026 Duo · duo-app.app</span><nav><a href="./">Accueil</a><a href="aide.html">Aide</a><a href="confidentialite.html">Confidentialité</a></nav></div></footer>
 </body></html>
 '''
 def page(fn,title,desc,body):
