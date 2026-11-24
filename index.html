@@ -337,7 +337,7 @@ footer a:hover{color:var(--texte)}
         <div class="ctas" id="telecharger">
           <a class="btn btn-noir btn-store" href="#" data-store-button>
             <svg width="26" height="26" fill="currentColor" aria-hidden="true"><use href="#i-apple"/></svg>
-            <span><small data-store-small>Bientôt sur l'</small><span>App Store</span></span>
+            <span>App Store</span>
           </a>
           <a class="btn btn-blanc" href="#fonctionnalites">Découvrir l'app
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -637,7 +637,7 @@ footer a:hover{color:var(--texte)}
           <div class="ctas">
             <a class="btn btn-blanc btn-store" href="#" data-store-button>
               <svg width="26" height="26" fill="currentColor" aria-hidden="true"><use href="#i-apple"/></svg>
-              <span><small data-store-small>Bientôt sur l'</small><span>App Store</span></span>
+              <span>App Store</span>
             </a>
             <a class="btn btn-ghost" href="#comment">Comment ça marche</a>
           </div>
@@ -687,7 +687,6 @@ const APP_STORE_URL = "https://apps.apple.com/app/id6838469717";
     if (live) { a.href = APP_STORE_URL; a.target = "_blank"; a.rel = "noopener"; }
     else { a.setAttribute('aria-disabled','true'); a.addEventListener('click', e => e.preventDefault()); a.title = "L'app arrive bientôt sur l'App Store"; }
   });
-  document.querySelectorAll('[data-store-small]').forEach(s => s.textContent = live ? "Télécharger dans l'" : "Bientôt sur l'");
   document.querySelectorAll('[data-store-link]').forEach(a => { if (live) { a.href = APP_STORE_URL; a.target = "_blank"; a.rel = "noopener"; } });
 })();
 
