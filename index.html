@@ -129,6 +129,7 @@ section{scroll-margin-top:80px}
 .feat-visual.v1{background:radial-gradient(70% 70% at 50% 50%, #ECE9FF 0%, transparent 70%)}
 .feat-visual.v2{background:radial-gradient(70% 70% at 50% 50%, #E3F6EE 0%, transparent 70%)}
 .feat-visual.v3{background:radial-gradient(70% 70% at 50% 50%, #F0F0F4 0%, transparent 70%)}
+.feat-shot{width:365px;max-width:100%;height:auto;display:block}
 .feat p.lead{font-size:18px;color:var(--attenue);margin-top:18px}
 .checks{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px}
 .checks li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--texte-2)}
@@ -442,29 +443,11 @@ footer a:hover{color:var(--texte)}
 
       <!-- Dépenses -->
       <div class="feat">
-        <div class="feat-visual v1 reveal" aria-hidden="true">
-          <div class="phone"><div class="screen"><div class="island"></div>
-            <div class="ui" style="padding-top:60px">
-              <div class="row"><span class="round"><svg width="18" height="18" fill="none" stroke="#111114" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span><b style="font-size:17px">Nouvelle dépense</b><span style="width:44px"></span></div>
-              <div class="col" style="align-items:center;gap:6px;margin-top:26px"><span class="t13 muted">Montant</span><span style="font-size:52px;font-weight:600;letter-spacing:-.03em">86,40 $</span><span class="card t13" style="padding:8px 12px;border-radius:999px;font-weight:500"><svg width="15" height="15" fill="none" stroke="#111114" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-2px;margin-right:6px"><use href="#i-cal"/></svg>Aujourd'hui</span></div>
-              <div class="col" style="gap:6px;margin-top:20px"><span class="t13" style="font-weight:500;color:var(--texte-2)">Titre</span><div class="card" style="height:52px;border-radius:16px;border:1px solid var(--champ);display:flex;align-items:center;padding:0 16px;font-size:16px">Épicerie IGA</div></div>
-              <div class="col" style="gap:8px;margin-top:16px"><span class="t13" style="font-weight:500;color:var(--texte-2)">Catégorie</span>
-                <div style="display:flex;flex-wrap:wrap;gap:8px">
-                  <span style="background:var(--sombre);color:#fff;padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500">Épicerie</span>
-                  <span class="card" style="padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--champ)">Logement</span>
-                  <span class="card" style="padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--champ)">Factures</span>
-                  <span class="card" style="padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;border:1px solid var(--champ)">Resto</span>
-                </div></div>
-              <div class="col" style="gap:8px;margin-top:16px"><span class="t13" style="font-weight:500;color:var(--texte-2)">Répartition</span>
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--segment);border-radius:14px;padding:4px">
-                  <span style="background:#fff;border-radius:10px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;box-shadow:0 1px 3px rgba(0,0,0,.08)">50/50</span>
-                  <span style="height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--texte-2)">Montants</span>
-                  <span style="height:40px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--texte-2)">Pour l'autre</span>
-                </div>
-                <span class="t13 muted">Chacun paie 43,20 $ · Camille doit 43,20 $ à Valentin</span></div>
-              <div style="position:absolute;left:20px;right:20px;top:756px;height:54px;border-radius:999px;background:var(--sombre);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:16px">Enregistrer</div>
-            </div>
-          </div></div>
+        <div class="feat-visual v1 reveal">
+          <picture>
+            <source srcset="img/iphone-depenses.webp" type="image/webp">
+            <img class="feat-shot" src="img/iphone-depenses.png" width="365" height="665" alt="Écran Nouvelle dépense de Duo : montant, catégorie, qui a payé et répartition 50/50" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="reveal">
           <span class="eyebrow">Dépenses partagées</span>
@@ -481,24 +464,11 @@ footer a:hover{color:var(--texte)}
 
       <!-- Calendrier -->
       <div class="feat reverse">
-        <div class="feat-visual v2 reveal" aria-hidden="true">
-          <div class="phone"><div class="screen"><div class="island"></div>
-            <div class="ui">
-              <div class="row"><span class="t28">Calendrier</span><span class="round dark"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><use href="#i-plus"/></svg></span></div>
-              <div class="cal">
-                <div class="row" style="padding:0 6px 10px"><b style="font-size:16px">Novembre 2026</b><span class="t13 muted">‹ ›</span></div>
-                <div class="cal-grid" id="cal-grid"></div>
-              </div>
-              <div class="row" style="justify-content:flex-start;gap:16px;padding:12px 6px 0;font-size:12px;color:var(--texte-2)">
-                <span class="row" style="gap:6px"><i style="width:8px;height:8px;border-radius:50%;background:var(--sombre)"></i>Ensemble</span>
-                <span class="row" style="gap:6px"><i style="width:8px;height:8px;border-radius:50%;background:var(--p1-point)"></i>Valentin</span>
-                <span class="row" style="gap:6px"><i style="width:8px;height:8px;border-radius:50%;background:var(--p2-point)"></i>Camille</span>
-              </div>
-              <b style="display:block;font-size:17px;margin:20px 0 10px">Mercredi 25 novembre</b>
-              <div class="ev"><span class="date"><small>Mer</small><b>25</b></span><div class="col" style="flex:1;gap:3px"><b>Souper chez Julie et Marc</b><span class="t13 muted">19 h 00 · rappel la veille</span></div><span class="chip">Ensemble</span></div>
-              <div class="tabbar"><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-home"/></svg>Accueil</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-receipt"/></svg>Dépenses</span><span class="on"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cal"/></svg>Calendrier</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-list"/></svg>Courses</span></div>
-            </div>
-          </div></div>
+        <div class="feat-visual v2 reveal">
+          <picture>
+            <source srcset="img/iphone-calendrier.webp" type="image/webp">
+            <img class="feat-shot" src="img/iphone-calendrier.png" width="365" height="665" alt="Écran Calendrier de Duo : mois de novembre avec les événements de chacun et ceux du couple" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="reveal">
           <span class="eyebrow">Calendrier commun</span>
@@ -514,29 +484,11 @@ footer a:hover{color:var(--texte)}
 
       <!-- Courses -->
       <div class="feat">
-        <div class="feat-visual v3 reveal" aria-hidden="true">
-          <div class="phone"><div class="screen"><div class="island"></div>
-            <div class="ui">
-              <div class="row" style="align-items:flex-end"><div class="col" style="gap:4px"><span class="t28">Courses</span><span class="t14 muted">5 articles restants sur 7</span></div><span class="card t14" style="padding:10px 14px;border-radius:999px;font-weight:500">Retirer les cochés</span></div>
-              <div class="row" style="margin-top:20px;gap:8px"><div class="card row" style="flex:1;height:52px;border-radius:16px;padding:0 10px 0 16px"><span class="muted" style="font-size:16px">Ajouter un article</span><span class="t13" style="background:var(--fond);padding:7px 10px;border-radius:999px;font-weight:500;color:var(--texte-2)">Épicerie ⌄</span></div><span style="width:52px;height:52px;border-radius:16px;background:var(--sombre);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><use href="#i-plus"/></svg></span></div>
-              <div class="grp">Fruits et légumes</div>
-              <div class="list">
-                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Bananes</span><span class="mini-av p2">C</span></div>
-                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Avocats</span><span class="mini-av p1">V</span></div>
-              </div>
-              <div class="grp">Produits laitiers</div>
-              <div class="list">
-                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Yogourt grec</span><span class="mini-av p1">V</span></div>
-                <div class="li"><span class="cb on"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></span><span class="done" style="flex:1;font-size:16px">Lait 2 %</span><span class="mini-av p2">C</span></div>
-              </div>
-              <div class="grp">Épicerie</div>
-              <div class="list">
-                <div class="li"><span class="cb"></span><span style="flex:1;font-size:16px">Pâtes</span><span class="mini-av p1">V</span></div>
-                <div class="li"><span class="cb on"><svg width="14" height="14" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg></span><span class="done" style="flex:1;font-size:16px">Pain tranché</span><span class="mini-av p2">C</span></div>
-              </div>
-              <div class="tabbar"><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-home"/></svg>Accueil</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-receipt"/></svg>Dépenses</span><span><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cal"/></svg>Calendrier</span><span class="on"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><use href="#i-list"/></svg>Courses</span></div>
-            </div>
-          </div></div>
+        <div class="feat-visual v3 reveal">
+          <picture>
+            <source srcset="img/iphone-courses.webp" type="image/webp">
+            <img class="feat-shot" src="img/iphone-courses.png" width="365" height="665" alt="Écran Courses de Duo : liste partagée classée par rayon, avec les articles cochés" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="reveal">
           <span class="eyebrow">Liste de courses</span>
