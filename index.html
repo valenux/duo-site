@@ -343,7 +343,6 @@ footer a:hover{color:var(--texte)}
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow"/></svg>
           </a>
         </div>
-        <p class="note" data-store-note>Disponible pour iPhone · iOS 17 ou plus récent</p>
       </div>
 
       <div class="hero-visual reveal" aria-hidden="true">
@@ -680,7 +679,7 @@ footer a:hover{color:var(--texte)}
    (ou TestFlight) dès que l'app est publiée. Tant que c'est
    vide, les boutons affichent « Bientôt sur l'App Store ».
    ---------------------------------------------------------- */
-const APP_STORE_URL = "";
+const APP_STORE_URL = "https://apps.apple.com/app/id6838469717";
 
 (function setupStoreLinks(){
   const live = APP_STORE_URL.trim() !== "";
@@ -690,8 +689,6 @@ const APP_STORE_URL = "";
   });
   document.querySelectorAll('[data-store-small]').forEach(s => s.textContent = live ? "Télécharger dans l'" : "Bientôt sur l'");
   document.querySelectorAll('[data-store-link]').forEach(a => { if (live) { a.href = APP_STORE_URL; a.target = "_blank"; a.rel = "noopener"; } });
-  const note = document.querySelector('[data-store-note]');
-  if (note && !live) note.textContent = "En test privé · Bientôt pour iPhone (iOS 17 ou plus récent)";
 })();
 
 /* Calendrier de l'écran Calendrier */
