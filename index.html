@@ -46,6 +46,10 @@ p{margin:0}
 .btn-noir{background:var(--sombre);color:#fff}
 .btn-noir:hover{box-shadow:0 10px 30px rgba(17,17,20,.22)}
 .btn-blanc{background:#fff;color:var(--texte);border-color:var(--champ)}
+.store-badge{display:inline-flex;align-items:center;border-radius:12px;transition:transform .15s ease}
+.store-badge:hover{transform:translateY(-1px)}
+.store-badge:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.store-badge img{display:block;height:54px;width:auto}
 .btn-store{height:58px;padding:0 22px 0 18px;gap:12px}
 .btn-store small{display:block;font-size:11px;font-weight:500;opacity:.75;letter-spacing:.02em;margin-bottom:3px}
 .btn-store span{display:block;font-size:17px;font-weight:600;letter-spacing:-.01em}
@@ -284,6 +288,8 @@ footer a:hover{color:var(--texte)}
   .fc-1{left:0;bottom:60px}
   .fc-2{right:0;top:auto;bottom:150px}
   .btn-store{width:100%;justify-content:center;padding:0 20px}
+  .ctas{justify-content:center}
+  .store-badge{align-self:center}
   .ctas .btn{width:100%}
 }
 </style>
@@ -335,9 +341,8 @@ footer a:hover{color:var(--texte)}
         <h1>La vie à deux,<br><em>simplement.</em></h1>
         <p class="lead">Dépenses partagées, calendrier commun et liste de courses&nbsp;: tout ce qui fait votre quotidien à deux, réuni dans une seule app iPhone.</p>
         <div class="ctas" id="telecharger">
-          <a class="btn btn-noir btn-store" href="#" data-store-button>
-            <svg width="26" height="26" fill="currentColor" aria-hidden="true"><use href="#i-apple"/></svg>
-            <span>App Store</span>
+          <a class="store-badge" href="#" data-store-button>
+            <img src="img/app-store-badge.svg" width="162" height="54" alt="Télécharger dans l'App Store">
           </a>
           <a class="btn btn-blanc" href="#fonctionnalites">Découvrir l'app
             <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -586,9 +591,8 @@ footer a:hover{color:var(--texte)}
           <h2>Prêts à simplifier<br>votre quotidien à deux&nbsp;?</h2>
           <p>Téléchargez Duo, invitez votre moitié, et laissez l'app s'occuper des comptes.</p>
           <div class="ctas">
-            <a class="btn btn-blanc btn-store" href="#" data-store-button>
-              <svg width="26" height="26" fill="currentColor" aria-hidden="true"><use href="#i-apple"/></svg>
-              <span>App Store</span>
+            <a class="store-badge" href="#" data-store-button>
+              <img src="img/app-store-badge.svg" width="162" height="54" alt="Télécharger dans l'App Store">
             </a>
             <a class="btn btn-ghost" href="#comment">Comment ça marche</a>
           </div>
